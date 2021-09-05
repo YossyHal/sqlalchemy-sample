@@ -11,10 +11,10 @@ def main() -> None:
 
 
 def create_table(cur: sqlite3.Cursor) -> None:
-    cur.execute("DROP TABLE IF EXISTS fruits")
+    cur.execute("DROP TABLE IF EXISTS fruit")
     cur.execute(
         """
-CREATE TABLE fruits(
+CREATE TABLE fruit(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     名前 STRING,
     値段 INTEGER
@@ -24,12 +24,12 @@ CREATE TABLE fruits(
 
 
 def insert(cur: sqlite3.Cursor) -> None:
-    fruits = [("りんご", 159), ("みかん", 72), ("葡萄", 861)]
-    cur.executemany("INSERT INTO fruits(名前, 値段 ) VALUES ( ?, ?)", fruits)
+    fruit = [("りんご", 159), ("みかん", 72), ("葡萄", 861)]
+    cur.executemany("INSERT INTO fruit(名前, 値段 ) VALUES ( ?, ?)", fruit)
 
 
 def select(cur: sqlite3.Cursor) -> None:
-    results = cur.execute("SELECT * FROM fruits")
+    results = cur.execute("SELECT * FROM fruit")
     for result in results:
         print(result)
 
